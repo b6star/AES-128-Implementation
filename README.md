@@ -77,8 +77,8 @@ print(f"plaintext : 0x{recovered_text:032x}")
 키, 평문, 암호문은 각각 128비트 정수로 전달하며, 출력 시에는 32자리 16진수로 표현합니다. AES는 ECB 방식의 단일 블록 처리만 검증에 사용하며, 파일 암호화나 다중 블록 패딩은 포함하지 않습니다.
 ## AES State Matrix
 
-AES stores a 128-bit block in a 4×4 state matrix using column-major order.
-For the input block `000102030405060708090a0b0c0d0e0f`, the state is:
+AES는 128비트 블록을 열 우선 방식의 4×4 상태 행렬로 저장합니다.
+입력 블록이 `000102030405060708090a0b0c0d0e0f`인 경우 상태 행렬은 다음과 같습니다.
 
 ```text
        col0 col1 col2 col3
@@ -88,5 +88,5 @@ row2    02   06   0a   0e
 row3    03   07   0b   0f
 ```
 
-The implementation extracts bytes from the least significant byte first when
-constructing the matrix, so extraction starts at the bottom-right cell.
+구현에서는 행렬을 구성할 때 정수의 최하위 바이트부터 추출하므로,
+바이트 추출은 오른쪽 아래 칸에서 시작합니다.
